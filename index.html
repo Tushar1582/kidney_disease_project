@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KIDNEY DISEASE PREDICTION</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            margin-left: 2px;
+            margin-right: 115px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .login h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+{% if input_values is not defined %}
+  {% set input_values = {} %}
+{% endif %}
+
+<!-- Header Section -->
+<header>
+    <h1>KIDNEY DISEASE PREDICTOR</h1>
+</header>
+
+<!-- Main Login/Form Section -->
+<div class="login">
+    <form action="{{ url_for('predict') }}" method="post">
+        <input type="text" name="Age" placeholder="Age" required="required" value="{{ input_values.get('Age', '') }}"/>
+        <input type="text" name="Blood Pressure" placeholder="Blood Pressure" required="required" value="{{ input_values.get('Blood Pressure', '') }}"/>
+        <input type="text" name="Specific Gravity" placeholder="Specific Gravity" required="required" value="{{ input_values.get('Specific Gravity', '') }}"/>
+        <input type="text" name="Albumin" placeholder="Albumin" required="required" value="{{ input_values.get('Albumin', '') }}"/>
+        <input type="text" name="Sugar" placeholder="Sugar" required="required" value="{{ input_values.get('Sugar', '') }}"/>
+        <input type="text" name="Red Blood Cells" placeholder="Red Blood Cells" required="required" value="{{ input_values.get('Red Blood Cells', '') }}"/>
+        <input type="text" name="Pus Cells" placeholder="Pus Cells" required="required" value="{{ input_values.get('Pus Cells', '') }}"/>
+        <input type="text" name="Pus Cell Clumps" placeholder="Pus Cell Clumps" required="required" value="{{ input_values.get('Pus Cell Clumps', '') }}"/>
+        <input type="text" name="Bacteria" placeholder="Bacteria" required="required" value="{{ input_values.get('Bacteria', '') }}"/>
+        <input type="text" name="Blood Glucose Random" placeholder="Blood Glucose Random" required="required" value="{{ input_values.get('Blood Glucose Random', '') }}"/>
+        <input type="text" name="Blood Urea" placeholder="Blood Urea" required="required" value="{{ input_values.get('Blood Urea', '') }}"/>
+        <input type="text" name="Serum Creatinine" placeholder="Serum Creatinine" required="required" value="{{ input_values.get('Serum Creatinine', '') }}"/>
+        <input type="text" name="Sodium" placeholder="Sodium" required="required" value="{{ input_values.get('Sodium', '') }}"/>
+        <input type="text" name="Potassium" placeholder="Potassium" required="required" value="{{ input_values.get('Potassium', '') }}"/>
+        <input type="text" name="Hemoglobin" placeholder="Hemoglobin" required="required" value="{{ input_values.get('Hemoglobin', '') }}"/>
+        <input type="text" name="Packed Cell Volume" placeholder="Packed Cell Volume" required="required" value="{{ input_values.get('Packed Cell Volume', '') }}"/>
+        <input type="text" name="White Blood Cell count" placeholder="White Blood Cell count" required="required" value="{{ input_values.get('White Blood Cell count', '') }}"/>
+        <input type="text" name="Red Blood Cell count" placeholder="Red Blood Cell count" required="required" value="{{ input_values.get('Red Blood Cell count', '') }}"/>
+        <input type="text" name="Hypertension" placeholder="Hypertension" required="required" value="{{ input_values.get('Hypertension', '') }}"/>
+        <input type="text" name="Diabetes Mellitus" placeholder="Diabetes Mellitus" required="required" value="{{ input_values.get('Diabetes Mellitus', '') }}"/>
+        <input type="text" name="Coronary Artery Disease" placeholder="Coronary Artery Disease" required="required" value="{{ input_values.get('Coronary Artery Disease', '') }}"/>
+        <input type="text" name="Appetite" placeholder="Appetite" required="required" value="{{ input_values.get('Appetite', '') }}"/>
+        <input type="text" name="Pedal Edema" placeholder="Pedal Edema" required="required" value="{{ input_values.get('Pedal Edema', '') }}"/>
+        <input type="text" name="Anemia" placeholder="Anemia" required="required" value="{{ input_values.get('Anemia', '') }}"/>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <h1 id="predi">{{ prediction_text }}</h1>
+</div>
+</body>
+</html>
